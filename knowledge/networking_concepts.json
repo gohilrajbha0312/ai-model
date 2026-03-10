@@ -1,0 +1,29 @@
+{
+    "networking_concepts": {
+        "title": "Networking Concepts for Cybersecurity",
+        "description": "Core networking knowledge essential for penetration testing and security analysis.",
+        "keywords": [
+            "networking",
+            "tcp",
+            "udp",
+            "ip",
+            "dns",
+            "http",
+            "osi",
+            "subnet",
+            "firewall",
+            "vpn",
+            "protocol"
+        ],
+        "topics": {
+            "OSI Model": "Layer 1 Physical: cables, hubs. Layer 2 Data Link: MAC addresses, switches, ARP. Layer 3 Network: IP addresses, routers, ICMP. Layer 4 Transport: TCP (reliable, connection-oriented), UDP (fast, connectionless). Layer 5 Session: session management. Layer 6 Presentation: encryption, encoding. Layer 7 Application: HTTP, DNS, FTP, SSH. Security relevance: attacks target specific layers — ARP spoofing (L2), IP spoofing (L3), SYN flood (L4), DNS poisoning (L7).",
+            "TCP/IP & Three-Way Handshake": "TCP ensures reliable delivery: SYN → SYN-ACK → ACK. Connection states: LISTEN, SYN_SENT, SYN_RECEIVED, ESTABLISHED, FIN_WAIT, CLOSE_WAIT, TIME_WAIT. Security: SYN flood overwhelms half-open connections. TCP flags: SYN, ACK, FIN, RST, PSH, URG. Nmap uses flag combinations for stealth scanning (SYN scan = half-open). Port states: open, closed, filtered.",
+            "DNS": "Domain Name System resolves hostnames to IPs. Record types: A (IPv4), AAAA (IPv6), MX (mail), NS (nameserver), CNAME (alias), TXT (SPF, DKIM, DMARC), SOA (authority), PTR (reverse). DNS enumeration: zone transfers (AXFR), brute-force subdomains, DNS cache snooping. Attacks: DNS poisoning/spoofing, DNS tunneling (data exfil), DNS amplification DDoS. Tools: dig, nslookup, dnsenum, dnsrecon.",
+            "HTTP/HTTPS": "HTTP methods: GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD. Status codes: 200 OK, 301 redirect, 403 forbidden, 404 not found, 500 server error. Headers: Cookie, Authorization, Content-Type, X-Forwarded-For, CORS headers. HTTPS: TLS handshake (ClientHello → ServerHello → Certificate → Key Exchange → Finished). Security headers: HSTS, CSP, X-Frame-Options, X-XSS-Protection.",
+            "Subnetting & CIDR": "IPv4: 32 bits, notation x.x.x.x. CIDR: /24 = 256 addresses, /16 = 65536. Private ranges: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16. Subnet mask: 255.255.255.0 = /24. Network address: first IP. Broadcast: last IP. Usable hosts = 2^(32 - prefix) - 2. IPv6: 128 bits, notation x:x:x:x:x:x:x:x. Link-local: fe80::/10.",
+            "Common Ports": "21 FTP, 22 SSH, 23 Telnet, 25 SMTP, 53 DNS, 80 HTTP, 110 POP3, 135 MSRPC, 139 NetBIOS, 143 IMAP, 443 HTTPS, 445 SMB, 993 IMAPS, 995 POP3S, 1433 MSSQL, 1521 Oracle, 3306 MySQL, 3389 RDP, 5432 PostgreSQL, 5900 VNC, 6379 Redis, 8080 HTTP-alt, 8443 HTTPS-alt, 27017 MongoDB.",
+            "Firewalls & NAT": "Firewall types: packet filter (L3/L4), stateful inspection (tracks connections), application gateway/proxy (L7), next-gen (deep packet inspection + IDS). Rules: allow/deny based on source/destination IP, port, protocol. NAT: Network Address Translation — maps private IPs to public. Types: SNAT (source), DNAT (destination), PAT (port-level). NAT traversal: techniques to bypass NAT for P2P or VPN.",
+            "VPN & Tunneling": "VPN protocols: OpenVPN (SSL/TLS, UDP/TCP), WireGuard (modern, fast), IPSec (IKEv2, transport/tunnel mode), L2TP/IPSec. SSH tunneling: ssh -L (local forward), ssh -R (reverse forward), ssh -D (SOCKS proxy). Use cases: encrypted remote access, bypass censorship, pivot through compromised hosts. Detection: look for anomalous traffic patterns, unusual ports, encrypted traffic volumes."
+        }
+    }
+}

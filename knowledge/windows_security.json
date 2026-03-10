@@ -1,0 +1,25 @@
+{
+    "windows_security": {
+        "title": "Windows Security Commands & Hardening",
+        "description": "Essential Windows commands and techniques for security auditing, Active Directory attacks, and incident response.",
+        "keywords": [
+            "windows",
+            "windows security",
+            "active directory",
+            "ad",
+            "powershell",
+            "cmd",
+            "hardening",
+            "incident response"
+        ],
+        "categories": {
+            "User & Access Management": "whoami /all — current user privileges & groups. net user — list users. net localgroup administrators — local admins. net group 'Domain Admins' /domain — domain admins. Get-ADUser -Filter * — AD users (PowerShell). Get-ADGroupMember — group members. net accounts — password policy. lusrmgr.msc — local user manager. gpresult /r — applied GPOs.",
+            "Active Directory Attacks": "Kerberoasting: Request TGS tickets for service accounts, crack offline. Tool: Rubeus kerberoast or GetUserSPNs.py. AS-REP Roasting: Target users without Kerberos pre-auth. Tool: GetNPUsers.py. Pass-the-Hash: Use NTLM hash to authenticate. Tool: Mimikatz sekurlsa::pth or Impacket psexec. Golden Ticket: Forge TGT with krbtgt hash. Tool: Mimikatz kerberos::golden. DCSync: Replicate AD hashes. Tool: Mimikatz lsadump::dcsync. BloodHound: Map AD attack paths visually.",
+            "Network & Firewall": "netstat -anob — connections with PID. Get-NetTCPConnection — PowerShell alternative. ipconfig /all — network config. route print — routing table. arp -a — ARP cache. netsh advfirewall show allprofiles — firewall status. nslookup — DNS queries. Test-NetConnection host -Port 80 — connectivity test. Get-NetFirewallRule — firewall rules.",
+            "Process & Service Analysis": "tasklist /v — running processes. Get-Process — PowerShell processes. wmic process list full — detailed process info. sc query — service status. Get-Service — PowerShell services. schtasks /query — scheduled tasks. Get-ScheduledTask — PowerShell tasks. wmic startup list full — auto-start programs. autoruns (Sysinternals) — comprehensive autostart.",
+            "Log Analysis & Detection": "wevtutil qe Security — query security events. Get-WinEvent -LogName Security — PowerShell log query. Event ID 4624 — successful logon. Event ID 4625 — failed logon. Event ID 4720 — account created. Event ID 4732 — user added to group. Event ID 4688 — new process. Event ID 7045 — new service installed. Sysmon — enhanced logging. WEFF — Windows Event Forwarding.",
+            "Security Tools": "Windows Defender: Get-MpThreatDetection. BitLocker: manage-bde -status. LAPS: Local Admin Password Solution. AppLocker: application whitelisting. Credential Guard: virtualization-based security. EMET/Exploit Guard: exploit mitigations. Sysmon: detailed process/network logging. Sysinternals Suite: Process Monitor, Process Explorer, Autoruns, TCPView.",
+            "Hardening Checklist": "1) Enable Windows Update auto-install. 2) Configure AppLocker/WDAC policies. 3) Enable Credential Guard. 4) Disable LLMNR & NBT-NS. 5) Implement LAPS. 6) Enable PowerShell logging (Script Block, Module, Transcription). 7) Use gMSA for service accounts. 8) Tiered admin model. 9) Enable Sysmon. 10) Disable SMBv1. 11) Configure Windows Firewall. 12) Regular GPO audits."
+        }
+    }
+}

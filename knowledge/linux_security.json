@@ -1,0 +1,25 @@
+{
+    "linux_security": {
+        "title": "Linux Security Commands & Hardening",
+        "description": "Essential Linux commands and techniques for security auditing, hardening, and incident response.",
+        "keywords": [
+            "linux",
+            "linux security",
+            "hardening",
+            "linux commands",
+            "unix",
+            "bash",
+            "terminal",
+            "incident response"
+        ],
+        "categories": {
+            "User & Access Management": "whoami — current user. id — UID/GID info. cat /etc/passwd — list users. cat /etc/shadow — password hashes (root). cat /etc/group — groups. last — login history. w — who is logged in. sudo -l — sudo privileges. passwd -l <user> — lock account. usermod -L <user> — disable user. chage -l <user> — password aging policy. visudo — edit sudoers safely.",
+            "File Permissions & Ownership": "ls -la — detailed permissions. chmod 600 file — owner read/write only. chmod 700 dir — owner full access. chown root:root file — change ownership. find / -perm -4000 -type f 2>/dev/null — find SUID binaries. find / -perm -2000 -type f 2>/dev/null — find SGID binaries. find / -writable -type d 2>/dev/null — world-writable directories. getfacl / setfacl — ACL management. umask 027 — restrictive default permissions.",
+            "Network Security": "ss -tulnp — listening ports. netstat -tulnp — connections (legacy). iptables -L -n -v — firewall rules. nft list ruleset — nftables rules. tcpdump -i eth0 -w capture.pcap — packet capture. nmap -sS -sV target — port scan. ss -s — socket statistics. ip route — routing table. fail2ban-client status — intrusion prevention. ufw status — Ubuntu firewall.",
+            "Process & Service Monitoring": "ps aux — all processes. top / htop — real-time monitoring. pstree — process tree. systemctl list-units --type=service — running services. journalctl -xe — system logs. strace -p PID — trace syscalls. lsof -i — network file descriptors. /proc/PID/ — process information. crontab -l — scheduled jobs. systemctl list-timers — systemd timers.",
+            "Log Analysis": "tail -f /var/log/auth.log — live auth log. grep 'Failed password' /var/log/auth.log — brute force detection. journalctl -u sshd — SSH service logs. ausearch -k login — audit log search. last -f /var/log/wtmp — login records. lastb — failed logins. cat /var/log/syslog — system events. dmesg — kernel ring buffer. logrotate — log rotation config.",
+            "Security Auditing Tools": "lynis audit system — comprehensive security audit. tiger — security audit tool. rkhunter --check — rootkit detection. chkrootkit — rootkit checker. aide --check — file integrity check. tripwire — integrity monitoring. ClamAV (clamscan) — antivirus scan. OpenSCAP — compliance checking. auditctl — set kernel audit rules.",
+            "Hardening Checklist": "1) Update system: apt update && apt upgrade. 2) Disable root SSH: PermitRootLogin no. 3) Use key-based SSH auth. 4) Configure firewall (ufw/iptables). 5) Enable audit daemon (auditd). 6) Set proper file permissions. 7) Remove unnecessary packages. 8) Configure fail2ban. 9) Enable automatic security updates. 10) Use SELinux/AppArmor. 11) Encrypt disk (LUKS). 12) Regular backups."
+        }
+    }
+}

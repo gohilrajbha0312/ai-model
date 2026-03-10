@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Chat — AI CyberSec Assistant{% endblock %}
+
+{% block content %}
+<div class="chat-container">
+    <div class="chat-header">
+        <h2>💬 AI Cybersecurity Assistant</h2>
+        <p>Ask cybersecurity questions, run security tools, learn pentesting techniques</p>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+        {% if history %}
+        {% for msg in history %}
+        <div class="message message-{{ msg.role }}">
+            <div class="message-avatar">
+                {% if msg.role == 'user' %}👤{% else %}🤖{% endif %}
+            </div>
+            <div class="message-content">
+                {% if msg.role == 'assistant' %}
+                <div class="message-text markdown-body">{{ msg.message | markdown | safe }}</div>
+                {% else %}
+                <div class="message-text">{{ msg.message }}</div>
+                {% endif %}
+                <div class="message-time">{{ msg.created_at }}</div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="chat-welcome">
+            <div class="welcome-icon">🛡️</div>
+            <h3>Welcome to AI CyberSec Assistant!</h3>
+            <p>I can help you with cybersecurity questions, run security tools, and more.</p>
+            <div class="quick-actions">
+                <button class="quick-btn" onclick="sendQuick('What is OWASP Top 10?')">📋 OWASP Top 10</button>
+                <button class="quick-btn" onclick="sendQuick('Explain MITRE ATT&CK framework')">🎯 MITRE
+                    ATT&CK</button>
+                <button class="quick-btn" onclick="sendQuick('What is the pentesting workflow?')">🔍
+                    Pentesting</button>
+                <button class="quick-btn" onclick="sendQuick('Explain SQL injection')">💉 SQL Injection</button>
+                <button class="quick-btn" onclick="sendQuick('Linux security commands')">🐧 Linux Security</button>
+                <button class="quick-btn" onclick="sendQuick('Active Directory attacks')">🏢 AD Attacks</button>
+                <button class="quick-btn" onclick="sendQuick('Metasploit basics')">⚔️ Metasploit</button>
+                <button class="quick-btn" onclick="sendQuick('Networking concepts for hacking')">🌐
+                    Networking</button>
+                <button class="quick-btn" onclick="sendQuick('scan ports on 127.0.0.1')">🔌 Scan Localhost</button>
+                <button class="quick-btn" onclick="sendQuick('help')">❓ Help</button>
+                <button class="quick-btn" onclick="sendQuick('topics')">📚 All Topics</button>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="chat-input-area">
+        <form id="chatForm" onsubmit="sendMessage(event)">
+            <div class="input-wrapper">
+                <input type="text" id="chatInput" placeholder="Ask anything about cybersecurity..." autocomplete="off"
+                    maxlength="2048">
+                <button type="submit" class="btn btn-primary" id="sendBtn">
+                    ➤ Send
+                </button>
+            </div>
+        </form>
+        <div class="input-hints">
+            Try: "What is XSS?" · "scan ports on 127.0.0.1" · "whois google.com" · "dns lookup example.com"
+        </div>
+    </div>
+</div>
+{% endblock %}

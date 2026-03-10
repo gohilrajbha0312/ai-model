@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Activity Logs — AI CyberSec Assistant{% endblock %}
+
+{% block content %}
+<div class="logs-container">
+    <div class="logs-header">
+        <h2>📋 Activity Logs</h2>
+        <p>All actions are recorded and encrypted for security audit purposes.</p>
+        <button class="btn btn-sm btn-outline" onclick="location.reload()">🔄 Refresh</button>
+    </div>
+
+    <div class="logs-table-wrapper">
+        {% if logs %}
+        <table class="logs-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Timestamp</th>
+                    <th>Action</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                <tr>
+                    <td class="log-id">{{ log.id }}</td>
+                    <td class="log-time">{{ log.created_at }}</td>
+                    <td>
+                        <span class="log-action">{{ log.action }}</span>
+                    </td>
+                    <td class="log-details">{{ log.details[:150] if log.details else '—' }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="logs-empty">
+            <p>📭 No activity logs yet. Start using the assistant to see your activity here.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

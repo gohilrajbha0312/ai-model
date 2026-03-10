@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Settings — AI CyberSec Assistant{% endblock %}
+
+{% block content %}
+<div class="settings-container auth-card" style="max-width: 600px; margin: 0 auto; padding: 2.5rem;">
+    <div class="auth-header">
+        <div class="auth-icon">⚙️</div>
+        <h1>Settings</h1>
+        <p class="auth-subtitle">Configure AI Providers and API Keys</p>
+    </div>
+
+    <form method="POST" action="{{ url_for('settings') }}" class="auth-form" id="settingsForm">
+
+        <div class="form-group">
+            <label for="ai_mode"><strong>AI Mode</strong></label>
+            <select id="ai_mode" name="ai_mode" class="tool-input">
+                <option value="local" {% if settings.ai_mode=='local' %}selected{% endif %}>Local Knowledge Base Only
+                </option>
+                <option value="chatgpt" {% if settings.ai_mode=='chatgpt' %}selected{% endif %}>ChatGPT (OpenAI)
+                </option>
+                <option value="gemini" {% if settings.ai_mode=='gemini' %}selected{% endif %}>Gemini (Google)</option>
+                <option value="ollama" {% if settings.ai_mode=='ollama' %}selected{% endif %}>Ollama (Local LLM)
+                </option>
+                <option value="hybrid" {% if settings.ai_mode=='hybrid' %}selected{% endif %}>Hybrid Mode (Best Answer)
+                </option>
+            </select>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--border-glass); margin: 1rem 0;">
+
+        <h3>OpenAI (ChatGPT)</h3>
+        <div class="form-group">
+            <label for="openai_api_key">API Key</label>
+            <input type="password" id="openai_api_key" name="openai_api_key" value="{{ settings.openai_api_key }}"
+                placeholder="sk-..." class="tool-input">
+        </div>
+        <div class="form-group">
+            <label for="openai_model">Model</label>
+            <input type="text" id="openai_model" name="openai_model" value="{{ settings.openai_model }}"
+                class="tool-input">
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--border-glass); margin: 1rem 0;">
+
+        <h3>Google (Gemini)</h3>
+        <div class="form-group">
+            <label for="gemini_api_key">API Key</label>
+            <input type="password" id="gemini_api_key" name="gemini_api_key" value="{{ settings.gemini_api_key }}"
+                placeholder="AIza..." class="tool-input">
+        </div>
+        <div class="form-group">
+            <label for="gemini_model">Model</label>
+            <input type="text" id="gemini_model" name="gemini_model" value="{{ settings.gemini_model }}"
+                class="tool-input">
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--border-glass); margin: 1rem 0;">
+
+        <h3>Ollama (Local LLM)</h3>
+        <div class="form-group">
+            <label for="ollama_url">Ollama API URL</label>
+            <input type="text" id="ollama_url" name="ollama_url"
+                value="{{ settings.get('ollama_url', 'http://localhost:11434') }}" class="tool-input">
+        </div>
+        <div class="form-group">
+            <label for="ollama_model">Model</label>
+            <input type="text" id="ollama_model" name="ollama_model"
+                value="{{ settings.get('ollama_model', 'llama3') }}" class="tool-input">
+        </div>
+
+        <div style="margin-top: 1.5rem;">
+            <button type="submit" class="btn btn-primary btn-full">
+                💾 Save Settings
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

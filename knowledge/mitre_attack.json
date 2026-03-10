@@ -1,0 +1,32 @@
+{
+    "mitre_attack": {
+        "title": "MITRE ATT&CK Framework Overview",
+        "description": "MITRE ATT&CK is a knowledge base of adversary tactics and techniques based on real-world observations. It is used for threat modelling, detection, and red team exercises.",
+        "keywords": [
+            "mitre",
+            "att&ck",
+            "attack",
+            "tactics",
+            "techniques",
+            "threat model",
+            "kill chain",
+            "ttp"
+        ],
+        "tactics": {
+            "Reconnaissance": "Gathering information to plan future operations. Techniques: active scanning, search open technical databases, phishing for information, gather victim host/identity/network/org information.",
+            "Resource Development": "Establishing resources for operations. Techniques: acquire infrastructure (domains, servers, botnets), compromise accounts, develop capabilities (malware, exploits), establish accounts, obtain capabilities (tool, code signing certs).",
+            "Initial Access": "Gaining a foothold in the network. Techniques: drive-by compromise, exploit public-facing application, external remote services, hardware additions, phishing (spearphishing attachment/link/service), supply chain compromise, trusted relationship, valid accounts.",
+            "Execution": "Running adversary-controlled code. Techniques: command & scripting interpreter (PowerShell, Bash, Python), container administration, exploitation for client execution, inter-process communication, native API, scheduled task/job, system services, WMI.",
+            "Persistence": "Maintaining access across restarts. Techniques: account manipulation, BITS jobs, boot/logon autostart execution, create account, event-triggered execution, external remote services, hijack execution flow, implant internal image, modify authentication process, scheduled task/job.",
+            "Privilege Escalation": "Gaining higher-level permissions. Techniques: abuse elevation control (UAC bypass), access token manipulation, boot/logon autostart execution, create process with token, domain policy modification, escape to host (container), event-triggered execution, exploitation for privilege escalation, hijack execution flow, process injection, scheduled task/job, valid accounts.",
+            "Defense Evasion": "Avoiding detection. Techniques: abuse elevation control, access token manipulation, BITS jobs, deobfuscate/decode, direct volume access, execution guardrails, exploitation for defense evasion, file/indicator removal, hide artifacts, impair defenses, indicator removal, masquerading, modify registry, obfuscated files, process injection, rootkit, subvert trust controls.",
+            "Credential Access": "Stealing credentials. Techniques: adversary-in-the-middle, brute force, credentials from password stores, exploitation for credential access, forced authentication, forge web credentials, input capture (keylogging), modify authentication process, network sniffing, OS credential dumping, steal application access token, steal web session cookie, unsecured credentials.",
+            "Discovery": "Understanding the environment. Techniques: account discovery, browser bookmark discovery, cloud infrastructure discovery, domain trust discovery, file & directory discovery, network service scanning, network share discovery, permission group discovery, process discovery, remote system discovery, system information discovery, system network config discovery.",
+            "Lateral Movement": "Moving through the network. Techniques: exploitation of remote services, internal spearphishing, lateral tool transfer, remote service session hijacking, remote services (RDP, SSH, SMB, WinRM), software deployment tools, taint shared content, use alternate authentication material (pass-the-hash, pass-the-ticket).",
+            "Collection": "Gathering relevant data. Techniques: archive collected data, audio capture, clipboard data, data from cloud storage, data from info repositories, data from local system, data from network shared drive, data from removable media, data staged, email collection, input capture, screen capture, video capture.",
+            "Command and Control": "Communicating with compromised systems. Techniques: application layer protocol (HTTP/S, DNS), communication through removable media, data encoding, data obfuscation, dynamic resolution (DNS, domain generation), encrypted channel, fallback channels, ingress tool transfer, multi-stage channels, non-application layer protocol, non-standard port, protocol tunneling, proxy, remote access software, traffic signaling, web service.",
+            "Exfiltration": "Stealing data from the network. Techniques: automated exfiltration, data transfer size limits, exfiltration over alternative protocol, exfiltration over C2 channel, exfiltration over other network medium, exfiltration over physical medium, exfiltration over web service, scheduled transfer, transfer data to cloud account.",
+            "Impact": "Manipulating, interrupting, or destroying systems. Techniques: account access removal, data destruction, data encrypted for impact (ransomware), data manipulation, defacement, disk wipe, endpoint denial of service, firmware corruption, inhibit system recovery, network denial of service, resource hijacking, service stop, system shutdown/reboot."
+        }
+    }
+}
