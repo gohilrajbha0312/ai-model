@@ -1,51 +1,73 @@
 <div align="center">
-  <img src="https://img.shields.io/badge/Python-3.10+-blue.svg" alt="Python Version">
-  <img src="https://img.shields.io/badge/Flask-Web%20Framework-lightgrey.svg" alt="Flask">
-  <img src="https://img.shields.io/badge/SQLite-Local%20DB-green.svg" alt="SQLite">
-  <img src="https://img.shields.io/badge/Security-Offline%20First-red.svg" alt="Offline First">
+  <img src="https://img.shields.io/badge/Python-3.10+-blue.svg?style=for-the-badge&logo=python&logoColor=white" alt="Python Version">
+  <img src="https://img.shields.io/badge/Flask-Web%20Framework-black.svg?style=for-the-badge&logo=flask&logoColor=white" alt="Flask">
+  <img src="https://img.shields.io/badge/SQLite-Local%20DB-003B57.svg?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite">
+  <img src="https://img.shields.io/badge/Security-Offline%20First-red.svg?style=for-the-badge" alt="Offline First">
+  
+  <br><br>
   
   <h1>🛡️ CyberSec AI Assistant</h1>
-  <p><strong>Secure, Private, Multi-Engine Cybersecurity AI Tool</strong></p>
+  <p><strong>The Ultimate Secure, Private, Multi-Engine Cybersecurity AI Companion.</strong></p>
   
   <p>
-    An intelligent, locally-hosted assistant designed for <b>penetration testers</b>, <b>security researchers</b>, and <b>cybersecurity students</b>.
+    Designed exclusively for <b>Penetration Testers</b>, <b>Security Researchers</b>, and <b>Cybersecurity Students</b>. Run security tools and analyze vulnerabilities directly through a natural language interface.
   </p>
 </div>
 
 <hr>
 
-The **CyberSec AI Assistant** is a comprehensive artificial intelligence tool that combines local knowledge bases, external AI models (ChatGPT, Gemini, Ollama), and automated security scripts into one seamless, privacy-focused dashboard.
-
-## 🌟 Key Features
-
-### 🧠 Multi-AI Engine Support
-Switch between different intelligence providers instantly from the Settings dashboard:
-
-| Mode | Description |
-| :--- | :--- |
-| 📴 **Local Offline** | Query the offline knowledge base for instant answers without sending data over the internet. |
-| 🌐 **ChatGPT & Gemini** | Connect API keys to query OpenAI's `gpt-4o` or Google's `gemini-1.5-pro` natively. |
-| 🦙 **Local LLMs (Ollama)** | Run Llama 3 or other models entirely offline via your local Ollama instance. |
-| 🔀 **Hybrid AI Router** | Let the system query all available AIs and automatically return the most detailed, high-quality response. |
-
-### 🛠️ Integrated Security Tools
-Execute tools directly from the AI chat using natural language:
-
-*   🔌 `scan ports on <IP/Domain>` — Runs a multi-threaded TCP port scan on common ports.
-*   🕵️‍♂️ `run recon on <Domain>` — Automates DNS, WHOIS, Subdomain Enumeration, and Vulnerability checking in one command.
-*   🐛 `lookup cve <CVE-ID>` — Fetches real-time vulnerability data from the CIRCL database.
-*   🔐 `check password <Password>` — Calculates Shannon entropy and grades password strength.
-*   📝 `whois <Domain>` — Retrieves WHOIS registrar and registration data.
-*   🌍 `dns lookup <Domain>` — Resolves A, MX, TXT, and NS records.
-
-### 🔒 Privacy & Security Focus
-*   **100% Local Hosting:** The Flask dashboard runs over localhost `127.0.0.1`.
-*   **Encrypted Local DB:** All chat histories, tool outputs, and settings are stored locally in an encrypted SQLite database.
-*   **XSS Protection:** Strict input validation and HTML sanitization (Bleach) ensure malicious payloads cannot be executed in the UI.
+## 📖 Table of Contents
+- [About the Project](#-about-the-project)
+- [Key Features](#-key-features)
+- [Installation](#-installation)
+- [Usage Guide](#-usage-guide)
+- [Built-In Tools](#-built-in-tools)
+- [Knowledge Base](#-built-in-knowledge-base)
+- [Security & Privacy](#-security--privacy)
+- [Disclaimer](#-disclaimer)
 
 ---
 
-## 🚀 Installation & Setup
+## 🎯 About the Project
+
+The **CyberSec AI Assistant** is a self-hosted, offline-capable AI dashboard. Instead of relying purely on a single cloud provider, this tool gives you the power to choose your AI engine dynamically. Whether you need the unparalleled reasoning of ChatGPT, the speed of Google Gemini, or the total privacy of a local Llama 3 model via Ollama—you control the intelligence.
+
+Coupled with an integrated toolkit, this assistant doesn't just answer questions; it executes reconnaissance, port scans, and vulnerability lookups directly from the chat interface.
+
+---
+
+## 🌟 Key Features
+
+### 🧠 Dynamic AI Routing
+Switch seamlessly between different intelligence engines from the unified Settings dashboard:
+
+| Mode | Privacy Level | Description |
+| :--- | :---: | :--- |
+| 📴 **Local KB** | 🟢 **Max** | Queries the local JSON knowledge base for instant, completely offline answers. |
+| 🦙 **Ollama** | 🟢 **Max** | Runs fully local LLMs (like Llama 3) via your dedicated Ollama instance. |
+| 🌐 **ChatGPT** | 🟡 Medium | Connects to OpenAI's `gpt-4o` API for deep reasoning and code generation. |
+| 🌐 **Gemini** | 🟡 Medium | Connects to Google's `gemini-1.5-pro` API for rapid threat intelligence analysis. |
+| 🔀 **Hybrid** | 🟡 Medium | Aggregates answers from all available models to give you the ultimate response. |
+
+### 🛠️ Hands-on Security Automation
+Why alt-tab to a terminal when your AI can run the tools for you? Our `ToolExecutor` understands natural language commands:
+*   `run recon on <domain>`
+*   `lookup cve <CVE-ID>`
+*   `scan ports on <IP/Domain>`
+*   `check password <password>`
+
+---
+
+## 🚀 Installation
+
+Setting up the CyberSec AI Assistant is fast and straightforward.
+
+### Prerequisites
+- Python 3.10 or higher
+- Git
+- *(Optional)* Ollama installed locally for offline LLM support
+
+### Setup Steps
 
 1. **Clone the repository:**
    ```bash
@@ -53,10 +75,10 @@ Execute tools directly from the AI chat using natural language:
    cd ai-model
    ```
 
-2. **Set up a Virtual Environment (Recommended):**
+2. **Create a Virtual Environment (Recommended):**
    ```bash
    python3 -m venv venv
-   source venv/bin/activate
+   source venv/bin/activate  # On Windows use: venv\Scripts\activate
    ```
 
 3. **Install Dependencies:**
@@ -64,46 +86,74 @@ Execute tools directly from the AI chat using natural language:
    pip install -r requirements.txt
    ```
 
-4. **Run the Application:**
+4. **Launch the Server:**
    ```bash
    python main.py
    ```
-   > 💡 *The server will automatically start on `http://127.0.0.1:5000` or `http://0.0.0.0:5000` (depending on your network configuration).*
+   > 💡 *The Flask server will start. Open your browser and navigate to `http://127.0.0.1:5000`.*
 
 ---
 
-## 💻 Usage
+## 💻 Usage Guide
 
-### 🌐 Web Dashboard
-Open your browser and navigate to `http://127.0.0.1:5000`. You will see three main sections:
-1. **💬 Chat:** Ask questions or trigger tools naturally.
-2. **🧰 Tools:** Execute specific tools (Port Scanner, Subdomain Enum, etc.) from a dedicated form interface.
-3. **📋 Logs:** View an audit trail of all AI queries, tools executed, and commands blocked by the security filter.
+### 🌐 The Web Dashboard
+Navigate to `http://127.0.0.1:5000` to access the application.
+- **💬 Chat Panel:** Ask technical questions, request exploit explanations, or trigger tools.
+- **🧰 Tools Panel:** A dedicated UI for running specific modules like Port Scanning or Subdomain Enumeration without using chat commands.
+- **📋 Activity Logs:** Every query, tool execution, and blocked malicious prompt is recorded in the local SQLite database for auditing.
 
-### ⚙️ Configuration (Settings)
-To use external AI models:
-1. Click the **⚙️ Settings** button in the Web UI.
-2. Enter your OpenAI or Google Gemini API keys.
-3. Choose your preferred AI Mode (`local`, `chatgpt`, `gemini`, `ollama`, or `hybrid`).
-4. Click **Save Settings**.
+### ⚙️ Configuring AI Models
+To unleash the full power of the assistant:
+1. Click the **⚙️ Settings** icon in the top navigation bar.
+2. Enter your **OpenAI API Key** or **Google Gemini API Key**.
+3. Select your active `AI Mode` from the dropdown.
+4. Click **Save Settings**. The AI Router will immediately reload without requiring a server restart.
 
-### ⌨️ CLI Mode
-You can also run the assistant directly in your terminal for a lightweight experience:
+### ⌨️ CLI Interface
+Prefer the terminal? Run the assistant directly from your command line:
 ```bash
 python main.py --mode cli
 ```
+Type `/help` to see available commands, or `/mode hybrid` to switch engines on the fly.
+
+---
+
+## 🧰 Built-In Tools Reference
+
+| Command Pattern | Action | Engine |
+| :--- | :--- | :--- |
+| `run recon on [Target]` | Full OSINT Pipeline (DNS, WHOIS, Vulns) | `ReconEngine` |
+| `scan ports on [Target]` | Multi-threaded TCP Top Ports Scan | `PortScanner` |
+| `lookup cve [CVE-ID]` | Fetches NIST/CIRCL Vulnerability Data | `CVELookup` |
+| `dns lookup [Target]` | Resolves A, MX, TXT, NS records | `DNSLookup` |
+| `whois [Target]` | Retrieves domain registration details | `WhoisLookup` |
+| `check password [Secret]` | Calculates Shannon entropy & strength | `PasswordChecker` |
 
 ---
 
 ## 📚 Built-In Knowledge Base
-The offline AI defaults explicitly to an extensive knowledge base covering:
-- ✅ OWASP Top 10 Vulnerabilities (XSS, SQLi, CSRF, etc.)
-- ✅ MITRE ATT&CK Framework
-- ✅ Linux & Windows Privilege Escalation / Hardening
-- ✅ Networking Concepts (TCP/IP, OSI model)
-- ✅ Penetration Testing Workflows
+If you run without API keys, the AI defaults to our strictly-curated offline knowledge base covering critical cybersecurity domains:
+- 🛡️ **OWASP Top 10** (XSS, SQLi, CSRF, IDOR, etc.)
+- 🎯 **MITRE ATT&CK Framework**
+- 🐧 **Linux & Windows Privilege Escalation**
+- 🌐 **Advanced Networking Concepts** (TCP/IP, OSI model)
+- 🧪 **Penetration Testing Methodology**
+
+---
+
+## 🔒 Security & Privacy
+We believe security tools should be secure by design:
+*   **Encrypted Storage:** Settings, histories, and API keys are stored locally in `data/assistant.db`.
+*   **XSS Protection:** Strict input validation and sanitization using Python `bleach` guarantee that malicious payloads in chat history never execute in the browser.
+*   **Query Filtering:** Built-in safeguards reject inherently illegal prompts (e.g., "how do I write a ransomware virus?").
 
 ---
 
 ## ⚠️ Disclaimer
-> **This tool is for educational and authorized testing purposes only.** Do not use the integrated security tools against targets, networks, or domains you do not own or have explicit permission to test. The developers are not responsible for any misuse.
+> **This tool is built strictly for educational, research, and authorized testing purposes only.** 
+> You must only use the integrated security tools (Port Scanner, Recon, etc.) against systems, networks, or domains that you own or have explicit, documented permission to test. The developers hold absolutely no responsibility for any misuse, damage, or illegal actions caused by utilizing this software.
+
+---
+<div align="center">
+  <i>Built with ❤️ for the Cybersecurity Community.</i>
+</div>
